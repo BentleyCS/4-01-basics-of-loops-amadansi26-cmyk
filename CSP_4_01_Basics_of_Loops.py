@@ -1,29 +1,32 @@
 #All questions must use a loop for full points.
 
 def oddNumbers(n:int) ->str:
-    a = 1
-    number = ""
-    while a<= n:
-        number = number + str(a) + " "
-        a=a+2
-        return number
+    number_string = ""
+    for i in range(1,n):
+        if i % 2 != 0:
+            number_string = number_string + " " + str(i)
+    return number_string
+print(oddNumbers(10))
 
 def backwards(n)-> int:
-    result = ""
-    while n>1:
-        result = result + str(n)+ " "
-        n = n - 1
-        return result
+    rewind = ""
+    for i in range(n, 0, -1):
+        rewind = rewind + str(i) + " "
+    return rewind
+print(backwards(8))
 
-def randomRepeating():
-    tries = 0
-    while True:
-        tries = tries + 1
-        num = random.randint(1, 10)
-        print(num)
-        if num == 10:
-            break
-    print("it took", tries, "tries to get a 10")
+def randomRepeating(n):
+    import random
+    highest = 1
+    lowest = 100
+    for i in range(n):
+        randomNum = random.randint(1, 100)
+        if randomNum > highest:
+            highest = randomNum
+        if randomNum < lowest:
+            lowest = randomNum
+    print(highest, lowest)
+randomRepeating(5)
 
 def randomRange(n):
     def randomRange(n):
@@ -46,13 +49,11 @@ def randomRange(n):
         print("Highest number:", highest)
 
 def reverse(word:str)->str:
-    def reverse(word: str) -> str:
-        result = ""
-        m = len(word) - 1
-        while m >= 0:
-            result = result + word[m]
-            m = m - 1
-        return result
+    reverseString = ""
+    for i in range(len(word)-1, -1, -1):
+        reverseString = reverseString + word[i]
+    print(reverseString)
+reverse("zeug")
 
 def fizzBuzzContinuous(n):
     result = ""
@@ -70,13 +71,15 @@ def fizzBuzzContinuous(n):
     return result
 
 def collatz(n):
-    while n != 1:
-        print(n)
+    while n > 1:
         if n % 2 == 0:
-            n = n // 2
-        else:
-            n = n * 3 + 1
-    print(1)
+            print(n)
+            n = n/2
+            continue
+        if n % 2 != 0:
+            print(n)
+            n = (n*3) + 1
+collatz(99)
 
 def fibonacci(n):
     if n <= 0:
